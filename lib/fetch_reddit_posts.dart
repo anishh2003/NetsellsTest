@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'services/networking.dart';
 import 'constants.dart';
+import 'reddit_posts_page.dart';
 
 class FetchRedditPosts extends StatefulWidget {
   @override
@@ -8,7 +9,7 @@ class FetchRedditPosts extends StatefulWidget {
 }
 
 class _FetchRedditPostsState extends State<FetchRedditPosts> {
-  var redditPostData;
+  var redditData;
 
   @override
   void initState() {
@@ -21,10 +22,16 @@ class _FetchRedditPostsState extends State<FetchRedditPosts> {
 
     var networkProductData = await networkHelper.getData();
 
-    redditPostData = networkProductData;
+    redditData = networkProductData;
 
-    print(networkProductData);
-    //goRedditPostPage();
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RedditPostPage(
+          redditPageData: redditData,
+        ),
+      ),
+    );
   }
 
   @override
