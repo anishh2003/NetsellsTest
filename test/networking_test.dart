@@ -1,6 +1,6 @@
 import 'package:netsells_test/services/networking.dart';
 import 'package:netsells_test/constants.dart';
-import 'package:flutter_test/flutter_test.dart';
+import 'package:test/test.dart';
 
 void main() {
   test('Network test ', () async {
