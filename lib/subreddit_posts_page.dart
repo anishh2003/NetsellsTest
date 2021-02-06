@@ -41,8 +41,14 @@ class _SubRedditPostPageState extends State<SubRedditPostPage> {
                 Expanded(
                     child: ListView(
                   children: [
-                    Text(widget.subRedditData[0]['data']['children'][0]['data']
-                        ['title']),
+                    Text(
+                      widget.subRedditData[0]['data']['children'][0]['data']
+                          ['title'],
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      height: 20.0,
+                    ),
                     Text(widget.subRedditData[0]['data']['children'][0]['data']
                         ['selftext']),
                     SizedBox(
