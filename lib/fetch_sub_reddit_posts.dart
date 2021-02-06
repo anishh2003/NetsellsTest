@@ -29,14 +29,14 @@ class _FetchSubRedditPostsState extends State<FetchSubRedditPosts> {
 
     print(subRedditData);
 
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => SubRedditPostPage(
-    //       subRedditData:subRedditData,
-    //     ),
-    //   ),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SubRedditPostPage(
+          subRedditData: subRedditData,
+        ),
+      ),
+    );
   }
 
   @override
