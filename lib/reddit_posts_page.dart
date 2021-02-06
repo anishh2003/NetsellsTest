@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'fetch_sub_reddit_posts.dart';
 
 class RedditPostPage extends StatefulWidget {
   final redditPageData;
@@ -24,6 +25,17 @@ class _RedditPostPageState extends State<RedditPostPage> {
                   'author : ${widget.redditPageData['data']['children'][index]['data']['author']}'),
               subtitle: Text(widget.redditPageData['data']['children'][index]
                   ['data']['title']),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FetchSubRedditPosts(
+                      subRedditUrl: widget.redditPageData['data']['children']
+                          [index]['data']['permalink'],
+                    ),
+                  ),
+                );
+              },
             ),
           );
         },
