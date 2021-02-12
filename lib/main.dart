@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'fetch_reddit_posts.dart';
+import 'reddit_posts_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
           color: Colors.lightBlue[200],
         ),
       ),
-      home: FetchRedditPosts(),
+      home: RedditPosts(),
     );
   }
 }

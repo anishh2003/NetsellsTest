@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
-import 'fetch_sub_reddit_posts.dart';
+import 'services/networking.dart';
+import 'constants.dart';
+import 'sub_reddit_posts.dart';
 
-class RedditPostPage extends StatefulWidget {
-  final redditPageData;
-
-  RedditPostPage({this.redditPageData});
+class RedditPosts extends StatefulWidget {
   @override
-  _RedditPostPageState createState() => _RedditPostPageState();
+  _RedditPostsState createState() => _RedditPostsState();
 }
 
-class _RedditPostPageState extends State<RedditPostPage> {
+class _RedditPostsState extends State<RedditPosts> {
+  var redditData;
+
+  @override
+  void initState() {
+    super.initState();
+    getNetworkData();
+  }
+
+  void getNetworkData() async {
+    NetworkHelper networkHelper = NetworkHelper('$redditURL/r/FlutterDev.json');
+
+    var networkProductData = await networkHelper.getData();
+
+    setState(() {
+      redditData = networkProductData;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,16 +39,16 @@ class _RedditPostPageState extends State<RedditPostPage> {
           return Card(
             child: ListTile(
               title: Text(
-                  'author : ${widget.redditPageData['data']['children'][index]['data']['author']}'),
-              subtitle: Text(widget.redditPageData['data']['children'][index]
-                  ['data']['title']),
+                  'author : ${redditData['data']['children'][index]['data']['author']}'),
+              subtitle:
+                  Text(redditData['data']['children'][index]['data']['title']),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => FetchSubRedditPosts(
-                      subRedditUrl: widget.redditPageData['data']['children']
-                          [index]['data']['permalink'],
+                      subRedditUrl: redditData['data']['children'][index]
+                          ['data']['permalink'],
                     ),
                   ),
                 );
@@ -39,7 +56,8 @@ class _RedditPostPageState extends State<RedditPostPage> {
             ),
           );
         },
-        itemCount: widget.redditPageData['data']['children'].length,
+        itemCount:
+            redditData == null ? 0 : redditData['data']['children'].length,
       ),
     );
   }
