@@ -46,7 +46,7 @@ class _RedditPostsState extends State<RedditPosts> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => FetchSubRedditPosts(
+                    builder: (context) => SubRedditPosts(
                       subRedditUrl: redditData['data']['children'][index]
                           ['data']['permalink'],
                     ),

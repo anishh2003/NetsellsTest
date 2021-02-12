@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'services/networking.dart';
 
-class FetchSubRedditPosts extends StatefulWidget {
+class SubRedditPosts extends StatefulWidget {
   final String subRedditUrl;
-  FetchSubRedditPosts({this.subRedditUrl});
+  SubRedditPosts({this.subRedditUrl});
 
   @override
-  _FetchSubRedditPostsState createState() => _FetchSubRedditPostsState();
+  _SubRedditPostsState createState() => _SubRedditPostsState();
 }
 
-class _FetchSubRedditPostsState extends State<FetchSubRedditPosts> {
+class _SubRedditPostsState extends State<SubRedditPosts> {
   var subRedditData;
 
   @override
